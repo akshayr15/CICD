@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Start ssh-keyscan  
           command: |  
-            ssh-keyscan ${SSH_HOST} >> ~/.ssh/known_hosts  
+            ssh-keyscan ${SSH_HOST} >> ~/.ssh/known_hosts && cat ~/.ssh/known_hosts
 
       # Download and cache dependencies
       #- restore_cache:
@@ -83,7 +83,7 @@ jobs:
       - run:
           name: Start ssh-keyscan
           command: |
-            ssh-keyscan ${SSH_HOST} >> ~/.ssh/known_hosts
+            ssh-keyscan ${SSH_HOST} >> ~/.ssh/known_hosts && cat ~/.ssh/known_hosts
 
       - run:
           name: Deployment by ssh
