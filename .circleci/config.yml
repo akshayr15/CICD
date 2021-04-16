@@ -9,6 +9,13 @@ jobs:
       # Specify the version you desire here
       - image: circleci/php:7.1-node-browsers
 
+      - image: circleci/mysql:8.0-ram
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_DATABASE: registration
+          MYSQL_USER: user
+          MYSQL_PASSWORD: user
+
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
