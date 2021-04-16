@@ -73,6 +73,8 @@ jobs:
       #- run: ./vendor/bin/codecept run
 
   deploy:
+    machine:
+      enabled: true
     steps:
       - add_ssh_keys:
           fingerprints:
