@@ -34,7 +34,7 @@ jobs:
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo docker-php-ext-install zip pdo_mysql
 
-      - run:  
+      - run:
           name: Start ssh-keyscan  
           command: |  
             ssh-keyscan ${SSH_HOST} >> ~/.ssh/known_hosts  
@@ -73,9 +73,16 @@ jobs:
       #- run: ./vendor/bin/codecept run
 
   deploy:
-    machine:
-      enabled: true
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "a4:71:57:c1:5b:21:1b:00:08:0e:a0:00:9e:42:d5:78"
+
+      - run:
+          name: Start ssh-keyscan
+          command: |
+            ssh-keyscan ${SSH_HOST} >> ~/.ssh/known_hosts
+
       - run:
           name: Deployment by ssh
           command: |
